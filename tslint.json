@@ -1,0 +1,103 @@
+{
+  "extends": "tslint-microsoft-contrib",
+  "rules": {
+    // 縦の位置が揃わないことを許可する
+    "align": [false, "parameter"],
+    // インターフェイスによる関数定義を許可する
+    "callable-types": false,
+    // 複雑度を指定する
+    "cyclomatic-complexity": [true, 30],
+    // exportされるモジュールや固有名が、ファイル名と同一ではないことを許可する
+    "export-name": false,
+    // 関数名
+    // static-method-regex: 静的メソッド名のlower camel caseを許可する
+    "function-name": [true, {"static-method-regex": "^[a-z][\\w\\d]+$"}],
+    // インデントルール
+    "indent": [true, "spaces", 2],
+    // インターフェースのプレフィックスが 'I' から始まっているかどうかチェックをしないようにする
+    "interface-name": false,
+    // 関数の最大行数の制限を解除する
+    "max-func-body-length": false,
+    // 最大行数の制限を解除する
+    "max-line-length": false,
+    // public, protected, privateが付かないメンバーを許容する
+    "member-access": false,
+    // テスト時に、一部引数をグローバルに定義する必要があるため許可する
+    "mocha-no-side-effect-code": false,
+    // return直前の改行なしを許可する
+    "newline-before-return": false,
+    // 明示的な宣言のanyを許可する
+    "no-any": false,
+    // supertestの引数で、getを使用する必要があるため許可する
+    "no-backbone-get-set-outside-model": false,
+    // default-exportを許可する
+    "no-default-export": false,
+    // プロミスのハンドリングなしを許可する
+    "no-floating-promises": false,
+    // URLの文字列を許可する
+    "no-http-string": false,
+    // ++, --演算子を許可する
+    "no-increment-decrement": false,
+    // 絶対パスを有効にするために、package.jsonに記載されていないモジュールから始まるimportを有効にする
+    "no-implicit-dependencies": false,
+    // import 'zone.js' を通したいので無効にする
+    "no-import-side-effect": [true, {"ignore-module": "zone.js"}],
+    // 複数行の文字列を許可する(テンプレート文字列用に)
+    "no-multiline-string": false,
+    // 相対パスを許可する
+    "no-relative-imports": false,
+    // 状態を持たないクラスを許可する (将来はなくしたい)
+    "no-stateless-class": false,
+    // 関数を指定してもエラーとなるバグのため外す
+    // 検証ver: tslint v5.8.0, tslint-microsoft-contrib v5.0.1
+    "no-string-based-set-interval": false,
+    // 絶対パスを有効にするために、サブモジュールのimport形式を有効にする
+    "no-submodule-imports": false,
+    // `TODO`コメントなどを許可する
+    "no-suspicious-comment": false,
+    // 一旦変数に入れてからリターンする形式を許可する
+    "no-unnecessary-local-variable": false,
+    // 関数定義のために、定義前の変数を使用することを許可する
+    "no-use-before-declare": false,
+    // reactの{}の前後のスペースなしを許可する ※ 必ず警告が出るBUGのため
+    "react-tsx-curly-spacing": false,
+    // null|undefined時の「!」でのbooleanへのcastを許可する
+    "strict-boolean-expressions": false,
+    "no-unnecessary-class": false,
+    "prefer-type-cast": false,
+    "no-irregular-whitespace": false,
+    // 型定義のオプション
+    "typedef": [
+      true,
+      // 関数/arrow関数の引数の型定義のチェック
+      "parameter",
+      "arrow-parameter",
+      // インターフェイスのプロパティの戻り値の型定義のチェック
+      "property-declaration",
+      // メンバーの型定義のチェック
+      "member-variable-declaration",
+      // オブジェクト/配列のdestructuringのチェック
+      // "object-destructuring",
+      "array-destructuring"
+      // 関数の戻り値の型定義を省略することは、許可する
+      // "call-signature",
+      // "arrow-call-signature",
+      // 型推論を許可するため、変数の型定義の省略を許可する
+      // "variable-declaration",
+    ],
+    // 変数名
+    //   ban-keywaords: TypeScriptのKeyWordをBanする
+    //   allow-leading-underscore: 先頭にunderscoreを許可する
+    "variable-name": [true, "ban-keywords", "allow-leading-underscore"],
+    // セミコロンを必須にする
+    "semicolon": [true, "always"],
+    // 最終行に改行をいれる
+    "eofline": true,
+    // 中括弧の中の空白を必須にする
+    "object-curly-spacing": true,
+    "array-bracket-spacing": [
+        true,
+        "never"
+    ]
+  }
+}

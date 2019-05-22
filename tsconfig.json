@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "outDir": "build",
+    "paths": {
+        "*": ["*"]
+    },
+    "removeComments": false,
+    "noUnusedParameters": true,
+    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": [
+      "node_modules"
+  ]
+}
