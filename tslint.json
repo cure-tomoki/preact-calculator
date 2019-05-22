@@ -66,6 +66,7 @@
     "no-unnecessary-class": false,
     "prefer-type-cast": false,
     "no-irregular-whitespace": false,
+    "react-this-binding-issue": false,
     // 型定義のオプション
     "typedef": [
       true,

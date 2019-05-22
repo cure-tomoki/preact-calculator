@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dev:build": "webpack -w",
     "build": "webpack"
   },
   "author": "tomotetra",
@@ -16,6 +17,9 @@
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "classnames": "^2.2.6",
+    "emotion": "^10.0.9",
     "preact": "^8.4.2"
   }
 }
