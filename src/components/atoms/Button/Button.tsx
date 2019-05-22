@@ -1,6 +1,8 @@
 import * as cx from 'classnames';
 import { h, PreactHTMLAttributes } from 'preact';
 
+import * as s from './Button.css';
+
 interface ButtonProps {
   value: string | number;
   className?: string;
@@ -21,7 +23,7 @@ export const Button = (props: ButtonProps) => {
     <button
       {...props}
       value={value}
-      className={cx(className, 'button')}
+      className={cx(className, s.button)}
       onClick={(e: MouseEvent) => handleClick(e, value)}
     >
       {children}
