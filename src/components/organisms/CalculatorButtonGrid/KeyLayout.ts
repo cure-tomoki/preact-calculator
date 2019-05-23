@@ -1,32 +1,27 @@
-export enum K {
-  KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9,
-  PLUS, MINUS, MULTIPLY, DIVIDE, EQUAL,
-  CLEAR, PERCENT, NEGATIVE
-}
+export type KeyTypes = 'NUMBER' | 'OPERATOR' | 'ACTION';
 
-export enum KeyType {
-  NUMBER = 'NUMBER',
-  OPERATOR = 'OPERATOR',
-  ACTION = 'ACTION'
-}
+export type NumberKeys = 'KEY_0' | 'KEY_1' | 'KEY_2' | 'KEY_3' | 'KEY_4' | 'KEY_5' | 'KEY_6' | 'KEY_7' | 'KEY_8' | 'KEY_9';
+export type OperatorKeys = 'PLUS' | 'MINUS' | 'MULTIPLY' | 'DIVIDE' | 'EQUAL';
+export type ActionKeys = 'CLEAR' | 'PERCENT' | 'NEGATIVE';
+export type Keys = NumberKeys | OperatorKeys | ActionKeys;
 
 export type KeyItem = {
-  name: K;
-  keyType: KeyType;
+  name: Keys;
+  keyType: KeyTypes;
   label: string;
   keyCode: number;
   value?: number;
   colSpan?: number;
 };
 
-const createNumberKeys = (): {[k in K]: KeyItem} => {
+const createNumberKeys = (): {[k in Keys]: KeyItem} => {
   // tslint:disable-next-line:no-object-literal-type-assertion
-  const keys: { [k in K]: KeyItem } = {} as { [k in K]: KeyItem };
+  const keys: { [k in Keys]: KeyItem } = {} as { [k in Keys]: KeyItem };
   for (let i = 0; i < 10; i++) {
-    const keyName: K = K[`KEY_${i}`];
+    const keyName = `KEY_${i}` as Keys;
     keys[keyName] = {
       name: keyName,
-      keyType: KeyType.NUMBER,
+      keyType: 'NUMBER',
       label: String(i),
       value: i,
       keyCode: i + 48
@@ -35,25 +30,26 @@ const createNumberKeys = (): {[k in K]: KeyItem} => {
   return keys;
 };
 
-export const KEYS: { [k in K]: KeyItem } = {
+// definition of all keys
+const keyList: { [k in Keys]: KeyItem } = {
   // number keys (0~9)
   ...createNumberKeys(),
   // operator keys
-  [K.PLUS]:      { name: K.PLUS, keyType: KeyType.OPERATOR, label: '+', keyCode: 187 },
-  [K.MINUS]:     { name: K.MINUS, keyType: KeyType.OPERATOR, label: '-', keyCode: 189 },
-  [K.MULTIPLY]:  { name: K.MULTIPLY, keyType: KeyType.OPERATOR, label: '×', keyCode: 186 },
-  [K.DIVIDE]:    { name: K.DIVIDE, keyType: KeyType.OPERATOR, label: '÷', keyCode: 191 },
-  [K.EQUAL]:     { name: K.EQUAL, keyType: KeyType.OPERATOR, label: '=', keyCode: 187 },
+  PLUS:      { name: 'PLUS' , keyType: 'OPERATOR', label: '+', keyCode: 187 },
+  MINUS:     { name: 'MINUS' , keyType: 'OPERATOR', label: '-', keyCode: 189 },
+  MULTIPLY:  { name: 'MULTIPLY' , keyType: 'OPERATOR', label: '×', keyCode: 186 },
+  DIVIDE:    { name: 'DIVIDE' , keyType: 'OPERATOR', label: '÷', keyCode: 191 },
+  EQUAL:     { name: 'EQUAL' , keyType: 'OPERATOR', label: '=', keyCode: 187 },
   // action keys
-  [K.CLEAR]:     { name: K.CLEAR, keyType: KeyType.ACTION, label: 'C', keyCode: 8 },
-  [K.PERCENT]:   { name: K.PERCENT, keyType: KeyType.ACTION, label: '%', keyCode: 53 },
-  [K.NEGATIVE]:  { name: K.NEGATIVE, keyType: KeyType.ACTION, label: '+/-', keyCode: 82 }
+  CLEAR:     { name: 'CLEAR' , keyType: 'ACTION', label: 'C', keyCode: 8 },
+  PERCENT:   { name: 'PERCENT' , keyType: 'ACTION', label: '%', keyCode: 53 },
+  NEGATIVE:  { name: 'NEGATIVE' , keyType: 'ACTION', label: '+/-', keyCode: 82 }
 };
 
 export const KEY_LAYOUT: KeyItem[][] = [
-  [KEYS[K.CLEAR],  KEYS[K.NEGATIVE],  KEYS[K.PERCENT],  KEYS[K.DIVIDE]],
-  [KEYS[K.KEY_7],  KEYS[K.KEY_8],     KEYS[K.KEY_9],    KEYS[K.MULTIPLY]],
-  [KEYS[K.KEY_4],  KEYS[K.KEY_5],     KEYS[K.KEY_6],    KEYS[K.MINUS]],
-  [KEYS[K.KEY_3],  KEYS[K.KEY_2],     KEYS[K.KEY_1],    KEYS[K.PLUS]],
-  [{...KEYS[K.KEY_0], colSpan: 3},  KEYS[K.EQUAL]]
+  [keyList.CLEAR,  keyList.NEGATIVE,  keyList.PERCENT,  keyList.DIVIDE],
+  [keyList.KEY_7,  keyList.KEY_8,     keyList.KEY_9,    keyList.MULTIPLY],
+  [keyList.KEY_4,  keyList.KEY_5,     keyList.KEY_6,    keyList.MINUS],
+  [keyList.KEY_3,  keyList.KEY_2,     keyList.KEY_1,    keyList.PLUS],
+  [{...keyList.KEY_0, colSpan: 3},                      keyList.EQUAL]
 ];

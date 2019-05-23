@@ -1,2 +1,10 @@
 export { CalculatorButtonGrid as default} from './CalculatorButtonGrid';
-export { KeyType, KeyItem, KEYS, KEY_LAYOUT } from './KeyLayout';
+export {
+  KeyTypes,
+  NumberKeys,
+  OperatorKeys,
+  ActionKeys,
+  Keys,
+  KeyItem,
+  KEY_LAYOUT
+} from './KeyLayout';

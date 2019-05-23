@@ -2,13 +2,13 @@ import * as cx from 'classnames';
 import { h } from 'preact';
 
 import Button from '../../atoms/Button';
-import { KeyType } from '../CalculatorButtonGrid';
+import { KeyTypes } from '../CalculatorButtonGrid';
 
 import * as s from './CalculatorButton.css';
 
 interface CalculatorButtonProps {
   label: string;
-  keyType: KeyType;
+  keyType: KeyTypes;
   value?: number;
   colSpan?: number;
   onClick(): any;
