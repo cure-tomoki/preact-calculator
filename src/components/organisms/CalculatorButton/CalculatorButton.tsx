@@ -2,7 +2,7 @@ import * as cx from 'classnames';
 import { h } from 'preact';
 
 import Button from '../../atoms/Button';
-import { KeyType } from './KeyLayout';
+import { KeyType } from '../CalculatorButtonGrid';
 
 import * as s from './CalculatorButton.css';
 

@@ -1,6 +1,5 @@
 import { Component, h } from 'preact';
-import { CalculatorButtonGrid } from './CalculatorButtonGrid';
-import { KeyItem, KeyType } from './KeyLayout';
+import CalculatorButtonGrid, { KeyItem, KeyType } from '../CalculatorButtonGrid';
 
 import * as s from './Calculator.css';
 

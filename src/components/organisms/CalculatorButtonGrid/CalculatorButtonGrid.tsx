@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { CalculatorButton } from './CalculatorButton';
+import CalculatorButton from '../CalculatorButton';
 import { KEY_LAYOUT, KeyItem } from './KeyLayout';
 
 interface CalculatorButtonGridProps {
