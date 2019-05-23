@@ -19,6 +19,7 @@ export class Calculator extends Component<{}, CalculatorState> {
     };
   }
 
+  // handles number key input
   handleNumberInput(n: number) {
     // tslint:disable-next-line:no-console
     console.log(n);
@@ -37,10 +38,6 @@ export class Calculator extends Component<{}, CalculatorState> {
       case KeyType.OPERATOR:
         this.handleOperatorInput(keyItem.label);
         break;
-      case KeyType.ACTION:
-          // tslint:disable-next-line:no-console
-          !!keyItem.action ? keyItem.action() : console.log('no action supplied');
-          break;
       default:
         // tslint:disable-next-line:no-console
         console.log('invalid button');
