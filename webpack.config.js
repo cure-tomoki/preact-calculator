@@ -16,14 +16,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: path.join(__dirname, 'src/components'),
+        include: path.join(__dirname, 'src'),
         use: [
           'style-loader',
           {
             loader: 'typings-for-css-modules-loader',
             options: {
               modules: true,
-              namedExport: true
+              namedExport: true,
+              localIdentName: '[local]--[hash:base64:5]',
             }
           }
         ]

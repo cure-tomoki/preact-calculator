@@ -1,10 +1,14 @@
 export enum K {
   KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9,
-  PLUS, MINUS, MULTIPLY, DIVIDE,
-  EQUAL, CLEAR, PERCENT, NEGATIVE
+  PLUS, MINUS, MULTIPLY, DIVIDE, EQUAL,
+  CLEAR, PERCENT, NEGATIVE
 }
 
-export enum KeyType { NUMBER, OPERATOR, ACTION }
+export enum KeyType {
+  NUMBER = 'NUMBER',
+  OPERATOR = 'OPERATOR',
+  ACTION = 'ACTION'
+}
 
 export type KeyItem = {
   name: K;
@@ -12,6 +16,7 @@ export type KeyItem = {
   label: string;
   keyCode: number;
   value?: number;
+  colSpan?: number;
 };
 
 const createNumberKeys = (): {[k in K]: KeyItem} => {
@@ -38,8 +43,8 @@ export const KEYS: { [k in K]: KeyItem } = {
   [K.MINUS]:     { name: K.MINUS, keyType: KeyType.OPERATOR, label: '-', keyCode: 189 },
   [K.MULTIPLY]:  { name: K.MULTIPLY, keyType: KeyType.OPERATOR, label: '×', keyCode: 186 },
   [K.DIVIDE]:    { name: K.DIVIDE, keyType: KeyType.OPERATOR, label: '÷', keyCode: 191 },
+  [K.EQUAL]:     { name: K.EQUAL, keyType: KeyType.OPERATOR, label: '=', keyCode: 187 },
   // action keys
-  [K.EQUAL]:     { name: K.EQUAL, keyType: KeyType.ACTION, label: '=', keyCode: 187 },
   [K.CLEAR]:     { name: K.CLEAR, keyType: KeyType.ACTION, label: 'C', keyCode: 8 },
   [K.PERCENT]:   { name: K.PERCENT, keyType: KeyType.ACTION, label: '%', keyCode: 53 },
   [K.NEGATIVE]:  { name: K.NEGATIVE, keyType: KeyType.ACTION, label: '+/-', keyCode: 82 }
@@ -50,5 +55,5 @@ export const KEY_LAYOUT: KeyItem[][] = [
   [KEYS[K.KEY_7],  KEYS[K.KEY_8],     KEYS[K.KEY_9],    KEYS[K.MULTIPLY]],
   [KEYS[K.KEY_4],  KEYS[K.KEY_5],     KEYS[K.KEY_6],    KEYS[K.MINUS]],
   [KEYS[K.KEY_3],  KEYS[K.KEY_2],     KEYS[K.KEY_1],    KEYS[K.PLUS]],
-  [KEYS[K.KEY_0],  KEYS[K.EQUAL]]
+  [{...KEYS[K.KEY_0], colSpan: 3},  KEYS[K.EQUAL]]
 ];

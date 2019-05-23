@@ -2,6 +2,8 @@ import { Component, h } from 'preact';
 import { CalculatorButtonGrid } from './CalculatorButtonGrid';
 import { KeyItem, KeyType } from './KeyLayout';
 
+import * as s from './Calculator.css';
+
 interface CalculatorState {
   slotVisible: number;
   slotHidden: number;
@@ -46,8 +48,8 @@ export class Calculator extends Component<{}, CalculatorState> {
 
   render() {
     return(
-      <div>
-        <span>{this.state.slotVisible}</span>
+      <div className={s.calculator}>
+        <p className={s.resultText}>{this.state.slotVisible}</p>
         <CalculatorButtonGrid
           onButtonPress={this.handleInput.bind(this)}
         />

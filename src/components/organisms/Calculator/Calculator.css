@@ -1,0 +1,12 @@
+.calculator {
+  width: 330px;
+  margin: 0 auto;
+}
+
+.resultText {
+  margin: 12px;
+  text-align: right;
+  color: #FFFFFF;
+  font-size: 72px;
+  font-weight: 300;
+}

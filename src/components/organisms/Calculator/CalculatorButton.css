@@ -1,5 +1,42 @@
-.CalculatorButton_button {
-  width: 64px;
-  height: 64px;
+.CalculatorButtonWrapper {
+  width: 72px;
+  height: 72px;
+  padding: 4px;
+}
+
+.CalculatorButton {
+  width: 100%;
+  height: 100%;
   cursor: pointer;
+  font-size: 32px;
+  border: none;
+  border-radius: 200px;
+  transition: 0.2s;
+}
+
+/* number */
+.CalculatorButton__number {
+  color: #FFFFFF;
+  background-color: #333333;
+}
+.CalculatorButton__number:active {
+  background-color: #A5A5A5;
+}
+
+/* operator */
+.CalculatorButton__operator {
+  color: #FFFFFF;
+  background-color: #F29838;
+}
+.CalculatorButton__operator:active {
+  background-color: #f7bd80;
+}
+
+/* action */
+.CalculatorButton__action {
+  color: #000000;
+  background-color: #A5A5A5;
+}
+.CalculatorButton__action:active {
+  background-color: #CCCCCC;
 }

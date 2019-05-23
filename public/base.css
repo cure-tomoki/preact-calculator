@@ -1,0 +1,19 @@
+/* styles common thoughout app */
+html, body, p, h1, h2, h3, h4, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  position: relative;
+  font-size: 70%;
+  min-height: 100%;
+  background-color: #000000;
+}
+
+body {
+  font-size: 1.4rem;
+  font-family: 'Helvetica Neue', 'Segoe UI', YuGothic, 'Yu Gothic Medium', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  /* accommodate for footer */
+  margin-bottom: var(--spacing-xl);
+}

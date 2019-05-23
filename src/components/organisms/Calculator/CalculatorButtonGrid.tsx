@@ -16,6 +16,8 @@ export const CalculatorButtonGrid = (props: CalculatorButtonGridProps) => {
               <CalculatorButton
                 label={keyItem.label}
                 value={keyItem.value}
+                keyType={keyItem.keyType}
+                colSpan={keyItem.colSpan}
                 onClick={() => onButtonPress(keyItem)}
               />
             ) }
