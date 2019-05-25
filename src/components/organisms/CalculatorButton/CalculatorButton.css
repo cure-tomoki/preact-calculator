@@ -14,7 +14,7 @@
   transition: 0.2s;
 }
 
-/* number */
+/* NUMBER */
 .CalculatorButton__number {
   color: #FFFFFF;
   background-color: #333333;
@@ -23,20 +23,20 @@
   background-color: #A5A5A5;
 }
 
-/* operator */
-.CalculatorButton__operator {
-  color: #FFFFFF;
-  background-color: #F29838;
-}
-.CalculatorButton__operator:active {
-  background-color: #f7bd80;
-}
-
-/* action */
-.CalculatorButton__action {
+/* SINGLE_ARG_ACTION & GLOBAL_ACTION */
+.CalculatorButton__single_arg_action .CalculatorButton__global_action {
   color: #000000;
   background-color: #A5A5A5;
 }
-.CalculatorButton__action:active {
+.CalculatorButton__single_arg_action:active, .CalculatorButton__global_action:active {
   background-color: #CCCCCC;
+}
+
+/* DOUBLE_ARG_ACTION */
+.CalculatorButton__double_arg_action {
+  color: #FFFFFF;
+  background-color: #F29838;
+}
+.CalculatorButton__double_arg_action:active {
+  background-color: #f7bd80;
 }

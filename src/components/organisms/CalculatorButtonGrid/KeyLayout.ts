@@ -1,4 +1,4 @@
-export type KeyTypes = 'NUMBER' | 'OPERATOR' | 'ACTION';
+export type KeyTypes = 'NUMBER' | 'GLOBAL_ACTION' | 'SINGLE_ARG_ACTION' | 'DOUBLE_ARG_ACTION';
 
 export type NumberKeys = 'KEY_0' | 'KEY_1' | 'KEY_2' | 'KEY_3' | 'KEY_4' | 'KEY_5' | 'KEY_6' | 'KEY_7' | 'KEY_8' | 'KEY_9';
 export type OperatorKeys = 'PLUS' | 'MINUS' | 'MULTIPLY' | 'DIVIDE' | 'EQUAL';
@@ -12,6 +12,7 @@ export type KeyItem = {
   keyCode: number;
   value?: number;
   colSpan?: number;
+  action?(...x: any): any;
 };
 
 const createNumberKeys = (): {[k in Keys]: KeyItem} => {
@@ -31,25 +32,26 @@ const createNumberKeys = (): {[k in Keys]: KeyItem} => {
 };
 
 // definition of all keys
-const keyList: { [k in Keys]: KeyItem } = {
+export const keyDefs: { [k in Keys]: KeyItem } = {
   // number keys (0~9)
   ...createNumberKeys(),
-  // operator keys
-  PLUS:      { name: 'PLUS' , keyType: 'OPERATOR', label: '+', keyCode: 187 },
-  MINUS:     { name: 'MINUS' , keyType: 'OPERATOR', label: '-', keyCode: 189 },
-  MULTIPLY:  { name: 'MULTIPLY' , keyType: 'OPERATOR', label: '×', keyCode: 186 },
-  DIVIDE:    { name: 'DIVIDE' , keyType: 'OPERATOR', label: '÷', keyCode: 191 },
-  EQUAL:     { name: 'EQUAL' , keyType: 'OPERATOR', label: '=', keyCode: 187 },
-  // action keys
-  CLEAR:     { name: 'CLEAR' , keyType: 'ACTION', label: 'C', keyCode: 8 },
-  PERCENT:   { name: 'PERCENT' , keyType: 'ACTION', label: '%', keyCode: 53 },
-  NEGATIVE:  { name: 'NEGATIVE' , keyType: 'ACTION', label: '+/-', keyCode: 82 }
+  // no arg actions
+  EQUAL:     { name: 'EQUAL', keyType: 'GLOBAL_ACTION', label: '=', keyCode: 187 },
+  CLEAR:     { name: 'CLEAR', keyType: 'GLOBAL_ACTION', label: 'C', keyCode: 8 },
+  // single arg actions
+  PERCENT:   { name: 'PERCENT',  keyType: 'SINGLE_ARG_ACTION', label: '%',   keyCode: 53, action: (x: number) => x / 100 },
+  NEGATIVE:  { name: 'NEGATIVE', keyType: 'SINGLE_ARG_ACTION', label: '+/-', keyCode: 82, action: (x: number) => x * -1 },
+  // double arg actions
+  PLUS:      { name: 'PLUS',     keyType: 'DOUBLE_ARG_ACTION', label: '+', keyCode: 187, action: (x: number, y: number) => y + x },
+  MINUS:     { name: 'MINUS',    keyType: 'DOUBLE_ARG_ACTION', label: '-', keyCode: 189, action: (x: number, y: number) => y - x },
+  MULTIPLY:  { name: 'MULTIPLY', keyType: 'DOUBLE_ARG_ACTION', label: '×', keyCode: 186, action: (x: number, y: number) => y * x },
+  DIVIDE:    { name: 'DIVIDE',   keyType: 'DOUBLE_ARG_ACTION', label: '÷', keyCode: 191, action: (x: number, y: number) => y / x }
 };
 
-export const KEY_LAYOUT: KeyItem[][] = [
-  [keyList.CLEAR,  keyList.NEGATIVE,  keyList.PERCENT,  keyList.DIVIDE],
-  [keyList.KEY_7,  keyList.KEY_8,     keyList.KEY_9,    keyList.MULTIPLY],
-  [keyList.KEY_4,  keyList.KEY_5,     keyList.KEY_6,    keyList.MINUS],
-  [keyList.KEY_3,  keyList.KEY_2,     keyList.KEY_1,    keyList.PLUS],
-  [{...keyList.KEY_0, colSpan: 3},                      keyList.EQUAL]
+export const createKeyLayout = (key: { [k in Keys]: KeyItem }): KeyItem[][] => [
+  [key.CLEAR,  key.NEGATIVE,  key.PERCENT,  key.DIVIDE],
+  [key.KEY_7,  key.KEY_8,     key.KEY_9,    key.MULTIPLY],
+  [key.KEY_4,  key.KEY_5,     key.KEY_6,    key.MINUS],
+  [key.KEY_3,  key.KEY_2,     key.KEY_1,    key.PLUS],
+  [{...key.KEY_0, colSpan: 3},  key.EQUAL]
 ];

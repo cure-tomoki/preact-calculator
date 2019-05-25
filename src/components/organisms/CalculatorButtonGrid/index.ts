@@ -6,5 +6,6 @@ export {
   ActionKeys,
   Keys,
   KeyItem,
-  KEY_LAYOUT
+  keyDefs,
+  createKeyLayout
 } from './KeyLayout';
