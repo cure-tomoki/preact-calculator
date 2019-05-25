@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "build": "webpack",
     "dev:build": "webpack -w",
-    "build": "webpack"
+    "prod:build": "webpack --mode production"
   },
   "author": "tomotetra",
   "license": "ISC",
