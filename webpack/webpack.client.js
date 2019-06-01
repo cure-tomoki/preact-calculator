@@ -3,10 +3,12 @@ const path = require('path');
 
 // client config
 module.exports = Object.assign({}, {
-  entry: './src/client.tsx',
+  entry: {
+    'app.bundle': './src/client.tsx',
+    'sw': './src/sw.js',
+  },
   output: {
     path: path.resolve(__dirname, '../public/'),
-    filename: 'app.bundle.js'
   },
   module: {
     rules: [
