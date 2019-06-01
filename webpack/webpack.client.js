@@ -1,13 +1,13 @@
+const baseConfig = require('./webpack.base');
 const path = require('path');
 
-module.exports = {
-  entry: path.resolve(__dirname, './src/client.tsx'),
+// client config
+module.exports = Object.assign({}, {
+  entry: './src/client.tsx',
   output: {
-    path: path.resolve(__dirname, './public/'),
+    path: path.resolve(__dirname, '../public/'),
     filename: 'app.bundle.js'
   },
-  mode: process.env.NODE_ENV || 'development',
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -16,7 +16,6 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: path.join(__dirname, 'src'),
         use: [
           'style-loader',
           {
@@ -31,10 +30,4 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    modules: [
-      'node_modules'
-    ],
-    extensions: [ '.js', '.ts', '.tsx' ]
-  }
-};
+}, baseConfig);

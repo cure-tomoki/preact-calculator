@@ -1,15 +1,21 @@
 {
   "name": "preact-calculator",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple calculator made with preact",
+  "repository": "https://github.com/tomotetra/preact-calculator.git",
   "scripts": {
-    "build": "webpack",
-    "dev:build": "webpack -w",
-    "prod:build": "webpack --mode production"
+    "cleanup": "rm -rf build public/*.js",
+    "dev:build:client": "webpack -w -d --config ./webpack/webpack.client.js",
+    "dev:build:server": "webpack -w -d --config ./webpack/webpack.server.js",
+    "build": "yarn run cleanup && yarn run build:client && yarn run build:server",
+    "build:client": "webpack --mode production --config ./webpack/webpack.client.js",
+    "build:server": "webpack --mode production --config ./webpack/webpack.server.js",
+    "start": "node build/server.js"
   },
   "author": "tomotetra",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.16.1",
     "css-loader": "^1.0.1",
     "style-loader": "^0.23.1",
     "ts-loader": "^6.0.1",
@@ -24,6 +30,7 @@
     "@emotion/core": "^10.0.10",
     "classnames": "^2.2.6",
     "emotion": "^10.0.9",
+    "express": "^4.17.1",
     "preact": "^8.4.2"
   }
 }
