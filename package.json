@@ -5,6 +5,9 @@
   "repository": "https://github.com/tomotetra/preact-calculator.git",
   "scripts": {
     "cleanup": "rm -rf build public/*.js",
+    "wait-for-server-build": "while [ ! -f build/server.js ]; do echo \"⏳ waiting for server build...\" && sleep 1; done",
+    "dev": "concurrently --kill-others \"yarn run dev:build:client\" \"yarn run dev:build:server\" \"yarn run dev:start\"",
+    "dev:start": "yarn run wait-for-server-build && NODE_ENV=development nodemon --delay 1 --watch build build/server.js",
     "dev:build:client": "webpack -w -d --config ./webpack/webpack.client.js",
     "dev:build:server": "webpack -w -d --config ./webpack/webpack.server.js",
     "build": "yarn run cleanup && yarn run build:client && yarn run build:server",
@@ -16,7 +19,9 @@
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.16.1",
+    "concurrently": "^4.1.0",
     "css-loader": "^1.0.1",
+    "nodemon": "^1.19.1",
     "style-loader": "^0.23.1",
     "ts-loader": "^6.0.1",
     "tslint": "^5.16.0",
