@@ -2,6 +2,8 @@ import { h } from 'preact';
 import CalculatorButton from '../CalculatorButton';
 import { KeyItem } from './KeyLayout';
 
+import * as s from './CalculatorButtonGrid.css';
+
 interface CalculatorButtonGridProps {
   layout: KeyItem[][];
   onButtonPress(k: KeyItem): void;
@@ -10,7 +12,7 @@ interface CalculatorButtonGridProps {
 export const CalculatorButtonGrid = (props: CalculatorButtonGridProps) => {
   const { layout, onButtonPress } = props;
   return(
-    <table>
+    <table className={s.CalculatorButtonTable}>
       { layout.map((row: KeyItem[]) =>
           <tr>
             { row.map((keyItem: KeyItem) =>

@@ -24,7 +24,7 @@
 }
 
 /* SINGLE_ARG_ACTION & GLOBAL_ACTION */
-.CalculatorButton__single_arg_action .CalculatorButton__global_action {
+.CalculatorButton__single_arg_action, .CalculatorButton__global_action {
   color: #000000;
   background-color: #A5A5A5;
 }

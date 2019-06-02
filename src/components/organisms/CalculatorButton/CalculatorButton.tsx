@@ -16,8 +16,13 @@ interface CalculatorButtonProps {
 
 export const CalculatorButton = (props: CalculatorButtonProps) => {
   const { label, keyType, value, colSpan, onClick } = props;
+  const colSpanVal = colSpan || 1;
   return(
-    <td colSpan={colSpan || 1} className={s.CalculatorButtonWrapper}>
+    <td
+      colSpan={colSpanVal}
+      className={s.CalculatorButtonWrapper}
+      style={{width: `${colSpanVal * 72}px`}}
+    >
       <Button
         {...props}
         value={value}
