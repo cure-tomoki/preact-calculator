@@ -6,7 +6,7 @@ const server = http.createServer(app);
 const port = 3000;
 
 // static files
-app.use(Express.static('public'));
+app.use(Express.static('dist'));
 app.get('/', (_req: Express.Request, res: Express.Response) => {
   res.sendFile('index.html');
 });

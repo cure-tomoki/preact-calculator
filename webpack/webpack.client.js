@@ -1,12 +1,13 @@
 const baseConfig = require('./webpack.base');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 // client config
 module.exports = Object.assign({}, {
   entry: './src/client.tsx',
   output: {
-    path: path.resolve(__dirname, '../public/'),
-    filename: 'app.bundle.js'
+    path: path.resolve(__dirname, '../dist/'),
+    filename: 'app.bundle.js',
   },
   module: {
     rules: [
@@ -30,4 +31,13 @@ module.exports = Object.assign({}, {
       },
     ],
   },
+  plugins: [
+    new CopyPlugin([
+      {
+        from: path.resolve(__dirname, '../src/static/*'),
+        to: path.resolve(__dirname, '../dist/'),
+        flatten: true
+      },
+    ]),
+  ],
 }, baseConfig);

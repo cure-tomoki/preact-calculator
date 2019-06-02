@@ -1,5 +1,6 @@
 node_modules/
 .DS_Store
 
+# build files
 build/
-public/*.bundle.js
+dist/
